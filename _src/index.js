@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = class HtmlWebpackInjectStringPlugin {
+class HtmlWebpackInjectStringPlugin {
     // NOTE: Fires on htmlWebpackPlugin 'beforeEmit' event
     // --- Defaults ---
     // append: false
@@ -13,7 +13,21 @@ module.exports = class HtmlWebpackInjectStringPlugin {
 
     
     constructor(options) {
-      this.options = options;
+        // Initialize defaults
+
+        if(!options.prepend && !options.replace && !options.append) options.prepend = true;
+
+        this.options = { 
+            prepend: (options.prepend || false),
+            replace: (options.replace || false),
+            append: (options.append || false),
+
+            search: (options.search || ''),
+            inject: (options.inject || ''),
+
+            newline: options.newline || { before: true, after: true},
+            dev: options.dev || false,
+        };
     }
 
     apply(compiler) {
@@ -26,7 +40,8 @@ module.exports = class HtmlWebpackInjectStringPlugin {
                 'HtmlWebpackInjectStringPlugin',
                 (data, cb) => {
                     // Validate
-                    if(typeof this.options.search != 'string' || !this.options.search) throw Error("html-webpack-inject-string-plugin: { 'search' } must be a string and cannot be empty!");
+                    if(typeof this.options.search != 'string') throw Error("html-webpack-inject-string-plugin: { 'search' } must be a string");
+                    if(!this.options.search) throw Error("html-webpack-inject-string-plugin: { 'search' } cannot be empty!");
                     if(typeof this.options.inject != 'string') throw Error("html-webpack-inject-string-plugin: { 'inject' } must be a string!");
 
                     // Searches for string
@@ -39,11 +54,11 @@ module.exports = class HtmlWebpackInjectStringPlugin {
 
                         // Check for newlines
                         let stringToInject = this.options.inject;
-                        if (this.options.newline.before) {
+                        if (this.options.newline && this.options.newline.before) {
                             if(this.options.dev) console.log("Adding newline before injection string"); 
                             stringToInject = '\r\n' + stringToInject;
                         }
-                        if (this.options.newline.after) {
+                        if (this.options.newline && this.options.newline.after) {
                             if(this.options.dev) console.log("Adding newline after injection string");          
                             stringToInject = stringToInject + '\r\n';
                         }
@@ -51,18 +66,21 @@ module.exports = class HtmlWebpackInjectStringPlugin {
                         
                         // Kudos to jAndy
                         // https://stackoverflow.com/a/4364902
-                        const splitString = data.html.split(this.options.search).splice(0, 0, this.options.search);
+                        const splitString = data.html.split(this.options.search);
+                        splitString.splice(1, 0, this.options.search)
+
+                        if(this.options.dev) console.log("HTML string was split into " + splitString.length + " elements");
 
                         // In the interest of being versatile, you can prepend, append and replace at the same time if you want. 
-                        if(replace) {
+                        if(this.options.replace) {
                             if(this.options.dev) console.log("Replacing injection string");
                             splitString[1] = this.options.inject;
                         }
-                        if(append) {
+                        if(this.options.append) {
                             if(this.options.dev) console.log("Appending injection string");
                             splitString.splice(2, 0, this.options.inject);
                         }
-                        if(prepend) {
+                        if(this.options.prepend) {
                             if(this.options.dev) console.log("Prepending injection string");
                             splitString.splice(1, 0, this.options.inject);
                         }

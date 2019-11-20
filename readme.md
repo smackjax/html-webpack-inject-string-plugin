@@ -76,6 +76,10 @@ const htmlWebpackInjectStringPlugin = require(html-webpack-inject-string-plugin)
 }
 ```
 
+## Notes
+* `html-webpack-plugin@next` is a peer dependency, but might cause issues if it isn't the only version installed.
+* Backslashes may need to be escaped twice(three slashes total), because it's run through a compiler first. 
+
 ## Wait, isn't this a little dangerous?
 Yep! 
 

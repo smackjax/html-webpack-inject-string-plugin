@@ -1,0 +1,4 @@
+# I know I don't have to do this. But it just makes things so clean...
+.gitignore
+node_modules
+_src

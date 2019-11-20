@@ -1,6 +1,6 @@
 # HTML WEBPACK INJECT STRING PLUGIN
 ## What's this?
-A dead simple plugin that searches each file output by html-webpack-plugin for a custom string and prepends, replaces, or appends a another custom string by injecting it, then returning the completed template.
+A dead simple plugin that searches each file output by html-webpack-plugin for a custom string(like a '\</body\>' tag) and prepends, replaces, or appends a another custom string by injecting it, then returning the completed template.
 
 ## Config default options 
 ```javascript
@@ -81,8 +81,10 @@ Yep!
 
 ## So why would I use it?
 Because sometimes it's just incredibly helpful. 
-For instance I needed to inject a browser-sync script into each html-webpack file with that contained '</body>'.
-I didn't want the boiler plate of having to add it individually and conditionally(only in development) to each page. 
+
+For instance I needed to inject a browser-sync script into each html-webpack file with that contained a closing body tag.
+I didn't want the boilerplate of having to add it individually and conditionally(only needed in development) to each page.
+
 So I made this plugin to add it automatically and only where it was needed. 
 
 ## I really like this! But it could be better. Can I contribute?

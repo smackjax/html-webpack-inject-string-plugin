@@ -4,23 +4,23 @@ A dead simple plugin that searches each file output by html-webpack-plugin for a
 
 ## Config default options 
 ```javascript
-// For example, searching for '</body>'
+
 {
     // String to search for
     search: "",
     // String to inject
-    inject: ""
+    inject: "",
     
-    // Injects before found string
+    // (optional)Injects before found string
     prepend: true
-    // Replaces found string with injection
+    // (optional)Replaces found string with injection
     replace: false
-    // Injects after found string
+    // (optional)Injects after found string
     append: false
     
-    // Adds 'r\n\' before or after injection string
+    // (optional)Adds 'r\n\' before or after injection string
     newline: { before: true, after: true }
-    // Enables console.log messages
+    // (optional)Enables console.log messages
     dev: false
 }
 ```

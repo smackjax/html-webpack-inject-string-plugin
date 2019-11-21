@@ -1,6 +1,9 @@
 # HTML WEBPACK INJECT STRING PLUGIN
 ## What's this?
-A dead simple plugin that searches each file output by html-webpack-plugin for a custom string(like a '\</body\>' tag) and prepends, replaces, or appends a another custom string by injecting it, then returning the completed template.
+A dead simple plugin that searches each file output by html-webpack-plugin for a custom string(like a '\</body\>' tag) and prepends, replaces, or appends a custom string by injecting it, then returning the completed template.
+
+## Install
+`npm install -D html-webpack-inject-string-plugin`
 
 ## Config default options 
 ```javascript

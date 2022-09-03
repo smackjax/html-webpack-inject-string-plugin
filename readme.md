@@ -3,9 +3,7 @@
 A dead simple plugin that searches each file output by html-webpack-plugin for a custom string(like a '\</body\>' tag) and prepends, replaces, or appends a custom string by injecting it, then returning the completed template.
 
 ## Install
-This(as of 2019-11-20) seems to need `html-webpack-plugin@next`, so if you run into problems try uninstalling the stable package and installing the `@next` version
-
-`npm install -D html-webpack-inject-string-plugin html-webpack-plugin@next`
+`npm i -D html-webpack-inject-string-plugin html-webpack-plugin`
 
 ## Config default options 
 ```javascript
@@ -78,7 +76,6 @@ const htmlWebpackInjectStringPlugin = require('html-webpack-inject-string-plugin
 ```
 
 ## Be aware
-* `html-webpack-plugin@next`(2019-11-20) is a peer dependency, but might cause issues if it isn't the only version installed.
 * Backslashes may need to be escaped twice(three slashes total), because it's run through a compiler first. 
 
 ## Wait, isn't this a little dangerous?
@@ -90,10 +87,4 @@ Because sometimes it's just incredibly helpful.
 For instance I needed to inject a browser-sync script into each html-webpack file that contained a closing body tag.
 I didn't want the boilerplate of adding it individually and conditionally(just in dev mode) to each page.
 
-So I made this plugin to add it automatically and only where it was needed. 
-
-## I really like this! But it could be better. Can I contribute?
-Of course! I just ask that any direct pull requests against here be as unopinionated as possible. 
-Part of the power for this plugin is in its being so basic.
-
-But if you have a great idea that's more opinionated, feel free to fork this as a starting point.
+So I made this plugin to add it automatically and only where and when it was needed. 

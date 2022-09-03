@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-inject-string-plugin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Injects a custom string either before, after, or replacing a specified string in html-webpack-plugin output",
   "main": "_src/index.js",
   "scripts": {},

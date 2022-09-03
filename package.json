@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-inject-string-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Injects a custom string either before, after, or replacing a specified string in html-webpack-plugin output",
   "main": "_src/index.js",
   "scripts": {},
@@ -18,14 +18,14 @@
   "author": "smackjax",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "babel-loader": "^8.0.6",
-    "webpack-cli": "^3.3.10"
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
+    "webpack-cli": "^4.10.0"
   },
   "peerDependencies": {
-    "html-webpack-plugin": "^4.0.0-beta.11",
-    "webpack": "^4.41.2"
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.74.0"
   }
 
 
